@@ -12,11 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    // //se usa cuando la tabla no se llama igual que el modelo
+    // protected $table = "users";
+
+
     protected $fillable = [
         'name',
         'email',
