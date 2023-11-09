@@ -16,8 +16,21 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
+        //generando dato aleatorio, true o false
+        $published = $this->faker->randomElement([true, false]);
+        $published_at = $published ? now() : null;
+
         return [
-            //
+            'title' => $this->faker->sentence(),
+            'slug' => $this->faker->slug(),
+            'excerpt' => $this->faker->text(2000),
+            'body' => $this->faker->text(200),
+            'image_path' => $this->faker->imageUrl(1280, 720),
+            'published_at' => $published,
+            'category_id' => rand(1, 5),
+            'user_id' => rand(1, 20),
+            'published_at' => $published_at,
+
         ];
     }
 }

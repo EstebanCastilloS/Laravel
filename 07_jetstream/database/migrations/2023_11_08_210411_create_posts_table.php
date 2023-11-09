@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100);
             $table->string('slug')->unique();
-            $table->mediumText('content');
-            $table->Text('excerpt');
+            $table->mediumText('excerpt');
+            $table->Text('body');
             $table->string('image_path')->nullable();
             $table->boolean('published')->default(false);
 

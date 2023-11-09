@@ -9,6 +9,18 @@ class Comment extends Model
 {
     use HasFactory;
 
+    //proteccion de campos
+    public $table = 'comments';
+    protected $primaryKey = 'id';
+    public $timestamps = True;
+
+    protected $fillable =
+    [
+        'body',
+
+    ];
+    protected $guarded = ['id'];
+
     //relacion uno a muchos inversa con usuarios
     public function user(){
         return $this->belongsTo(User::class);
