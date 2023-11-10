@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 //ruta admin
@@ -14,3 +15,5 @@ Route::get('/admin', function () {
     // ]);
     return view('admin.dashboard');
 })->name('admin.dashboard');
+
+Route::resource('/categories', CategoryController::class)->names('admin.categories');
