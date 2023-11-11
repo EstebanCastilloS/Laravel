@@ -23,10 +23,10 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'slug' => $this->faker->slug(),
-            'excerpt' => $this->faker->text(2000),
-            'body' => $this->faker->text(200),
+            'excerpt' => $this->faker->text(200),
+            'body' => $this->faker->text(2000),
             'image_path' => $this->faker->imageUrl(1280, 720),
-            'published_at' => $published,
+            'published' => rand(0,1),
             'category_id' => rand(1, 5),
             'user_id' => rand(1, 20),
             'published_at' => $published_at,

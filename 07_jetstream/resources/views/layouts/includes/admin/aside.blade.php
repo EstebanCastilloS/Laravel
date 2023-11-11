@@ -14,6 +14,13 @@
             'icon' => 'fa-solid fa-inbox'
 
         ],
+        [
+            'name' => 'Posts',
+            'url' => route('admin.posts.index'),
+            'active' => request()->routeIs('admin.posts.*'),
+            'icon' => 'fa-solid fa-blog'
+
+        ],
 
     ];
 @endphp

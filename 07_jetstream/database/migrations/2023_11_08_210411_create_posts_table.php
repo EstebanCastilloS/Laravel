@@ -18,7 +18,7 @@ return new class extends Migration
             $table->mediumText('excerpt');
             $table->Text('body');
             $table->string('image_path')->nullable();
-            $table->boolean('published')->default(false);
+            $table->boolean('published');
 
 
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
