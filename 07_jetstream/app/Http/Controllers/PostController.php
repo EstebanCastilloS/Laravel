@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -22,7 +24,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+        $users = User::all();
+        return view('admin.posts.create', compact('categories', 'users'));
     }
 
     /**
@@ -30,7 +34,31 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+
+        //dd($request->all());
+        $post = new Post();
+        $post->title = $request->title;
+        $post->slug = $request->slug;
+        $post->excerpt = $request->excerpt;
+        $post->body = $request->body;
+        $post->image_path = $request->image_path;
+        $post->published = $request->published;
+        $post->category_id = $request->category_id;
+        $post->user_id = $request->user_id;
+        $post->published_at = $request->published_at;
+        //dd($post);
+        $post->save();
+
+        //Post::create($request->all());
+
+        session()->flash('swal', [
+            'type' => 'success',
+            'title' => 'Post creado correctamente',
+            'text' => 'El post se creó con éxito',
+        ]);
+
+        return redirect()->route('admin.posts.index');
+
     }
 
     /**
