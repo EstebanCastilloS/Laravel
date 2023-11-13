@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Post extends Model
 {
@@ -27,6 +28,22 @@ class Post extends Model
         'published_at',
 
     ];
+
+    protected function title(): Attribute
+    {
+        return new Attribute(
+            set: fn ($value) => strtolower($value),
+            get: fn ($value) => ucfirst($value)
+        );
+    }
+
+    protected function image(): Attribute
+    {
+        return new Attribute(
+            get: fn() => $this->image_path ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ54lyv7VkhG0YO4R5Jr3dSiwoZbSwVrFgUWw&usqp=CAU'
+        );
+    }
+
 
     protected $guarded = ['id'];
 
