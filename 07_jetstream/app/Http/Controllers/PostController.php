@@ -74,7 +74,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        $users = User::all();
+        return view('admin.posts.edit', compact('post', 'categories', 'users'));
     }
 
     /**
@@ -82,7 +84,28 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+        //dd($request->all());
+        $post->update($request->all());
 
+        // $post->title = $request->title;
+        // $post->slug = $request->slug;
+        // $post->excerpt = $request->excerpt;
+        // $post->body = $request->body;
+        // $post->image_path = $request->image_path;
+        // $post->published = $request->published;
+        // $post->category_id = $request->category_id;
+        // $post->user_id = $request->user_id;
+        // $post->published_at = $request->published_at;
+        // //dd($post);
+        // $post->update();
+
+        session()->flash('swal', [
+            'type' => 'success',
+            'title' => 'Post actualizado correctamente',
+            'text' => 'El post se actualizó con éxito',
+        ]);
+
+        return redirect()->route('admin.posts.index', $post);
     }
 
     /**
@@ -90,6 +113,14 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        session()->flash('swal', [
+            'type' => 'success',
+            'title' => 'Post eliminado correctamente',
+            'text' => 'El post se eliminó con éxito',
+        ]);
+
+        return redirect()->route('admin.posts.index');
     }
 }

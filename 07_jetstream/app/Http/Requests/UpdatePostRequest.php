@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Post;
 
 class UpdatePostRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdatePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,17 @@ class UpdatePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required',
+            'slug' => 'required|unique:posts,slug,' . $this->post->id,
+            'excerpt' => $this->post->published ?'required' :'',
+            'body' => $this->post->published ? 'required' :'',
+            'image_path' => '',
+            'published' => 'required',
+            'category_id' => 'required|exists:categories,id',
+            'user_id' => 'required|exists:users,id',
+            'published_at' => '',
+
+            //dd($this->post->published)
         ];
     }
 }
