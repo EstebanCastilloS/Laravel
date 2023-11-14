@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
+use App\Models\Tag;
 use App\Models\User;
 
 class PostController extends Controller
@@ -76,7 +77,8 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $users = User::all();
-        return view('admin.posts.edit', compact('post', 'categories', 'users'));
+        $tags = Tag::all();
+        return view('admin.posts.edit', compact('post', 'categories', 'users', 'tags'));
     }
 
     /**

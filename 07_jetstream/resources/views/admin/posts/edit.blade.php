@@ -1,6 +1,11 @@
 <x-admin-layout>
     <h1>hola desde edit de Posts</h1>
 
+    {{-- @push('css')
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    @endpush --}}
+
     <form action="{{ route('admin.posts.update', $post) }}"
             method="POST">
 
@@ -32,7 +37,19 @@
             placeholder="Ingrese el contenido del Slug"/>
         </div>
 
+        {{-- <div class="mb-4">
+            <x-label class="mb-2">
+                Contenido de Prueba
+            </x-label>
+            <x-input
+            name="slug"
+            value="{{ old('slug', $post->slug) }}"
+            class="w-full"
+            placeholder="Ingrese el contenido del Slug"/>
+        </div> --}}
+
         <div class="mb-4">
+
             <x-label class="mb-2 ">
                 Extracto del Artículo
             </x-label>
@@ -40,6 +57,41 @@
                 {{ old('excerpt', $post->excerpt) }}
             </x-textarea>
         </div>
+
+        {{-- <div class="mb-4">
+            <x-label class="mb-2 ">
+                Etiquetas
+            </x-label>
+            <select class="tag-multiple" name="tags[]" multiple="multiple" style="width: 100%">
+
+                @foreach ( $tags as $tag)
+                    <option value="{{ $tag->id }}">
+                        {{ $tag->name }}
+                    </option>
+
+                @endforeach
+
+            </select>
+        </div> --}}
+
+        {{-- <div class="mb-4">
+            <x-label class="mb-1">
+                Etiquetas
+            </x-label>
+
+            <select class="select2"
+                    name="tags"
+                    multiple="multiple"
+                    style="width: 100%">
+
+                @foreach ($tags as $tag)
+                    <option value="{{ $tag->id }}">
+                        {{ $tag->name }}
+                    </option>
+                @endforeach
+
+            </select>
+        </div> --}}
 
 
         <div class="mb-4">
@@ -58,7 +110,7 @@
             </x-label>
             <x-select name="published" class="w-full">
 
-                {{-- <option value="0">{{ $post->published }}</option> --}}
+
                 @if($post->published == 0)
                     <option value="0">No Publicado</option>
                     <option value="1">Publicado</option>
@@ -129,11 +181,24 @@
     </form>
 
     @push('js')
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js">
+        </script>
+        {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js">
+        </script> --}}
+
         <script>
-            function deletePost(){
+            $(document).ready(function() {
+                $('.select2').select2();
+            });
+        </script>
+
+        <script>
+            function deletePost()
+            {
                 let form = document.getElementById('formDelete');
                 form.submit();
             }
         </script>
     @endpush
+
 </x-admin-layout>
