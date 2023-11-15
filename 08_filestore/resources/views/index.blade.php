@@ -11,7 +11,7 @@
 
     @forelse ($infos as $info)
         <li>
-            {{ $info->name }}  {{ $info->file_uri }}
+            <img src="{{ asset('storage/uploads/'.$info->file_uri) }}" alt="{{ $info->name }}" width="100px" />
         </li>
     @empty
         <h3>No data</h3>

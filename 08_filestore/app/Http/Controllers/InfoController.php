@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Info;
 use App\Http\Requests\StoreInfoRequest;
 use App\Http\Requests\UpdateInfoRequest;
-
+use Illuminate\Support\Facades\Storage;
 
 class InfoController extends Controller
 {
@@ -32,7 +32,10 @@ class InfoController extends Controller
     public function store(StoreInfoRequest $request)
     {
         $fileName = time().'.'.$request->file->extension();
-        $request->file->move(public_path('uploads'), $fileName);
+        //$request->file->move(public_path('uploads'), $fileName);
+        $request->file->storeAs('public/uploads', $fileName);
+
+
 
         $info = new Info();
         $info->name = $request->name;
