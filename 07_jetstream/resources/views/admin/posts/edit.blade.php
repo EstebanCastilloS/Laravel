@@ -7,7 +7,8 @@
     @endpush --}}
 
     <form action="{{ route('admin.posts.update', $post) }}"
-            method="POST">
+          method="POST"
+          enctype="multipart/form-data">
 
         @csrf
 
@@ -15,26 +16,37 @@
 
         <x-validation-errors class="mb-4" />
 
+        <div class="mb-6 relative">
+            <figure>
+                <img class="aspect-[16/9] object-cover object-center w-full" src="{{ $post->image }}" alt=""
+                    id="imgPreview">
+            </figure>
+
+            <div class="absolute top-8 right-8">
+                <label class="bg-white px-4 py-2 rounded-lg cursor-pointer">
+
+                    <i class="fa-solid fa-camera mr-2"></i>
+                    Actualizar Imagen
+                    <input type="file" accept="image/*" name="image" class="hidden"
+                        onchange="previewImage(event, '#imgPreview')">
+                </label>
+            </div>
+        </div>
+
         <div class="mb-4">
             <x-label class="mb-2">
                 Título del Artículo
             </x-label>
-            <x-input
-            name="title"
-            value="{{ old('title', $post->title) }}"
-            class="w-full"
-            placeholder="Ingrese el nombre del artículo"/>
+            <x-input name="title" value="{{ old('title', $post->title) }}" class="w-full"
+                placeholder="Ingrese el nombre del artículo" />
         </div>
 
         <div class="mb-4">
             <x-label class="mb-2">
                 Contenido del Slug
             </x-label>
-            <x-input
-            name="slug"
-            value="{{ old('slug', $post->slug) }}"
-            class="w-full"
-            placeholder="Ingrese el contenido del Slug"/>
+            <x-input name="slug" value="{{ old('slug', $post->slug) }}" class="w-full"
+                placeholder="Ingrese el contenido del Slug" />
         </div>
 
         {{-- <div class="mb-4">
@@ -64,7 +76,7 @@
             </x-label>
             <select class="tag-multiple" name="tags[]" multiple="multiple" style="width: 100%">
 
-                @foreach ( $tags as $tag)
+                @foreach ($tags as $tag)
                     <option value="{{ $tag->id }}">
                         {{ $tag->name }}
                     </option>
@@ -98,8 +110,7 @@
             <x-label class="mb-2 ">
                 Contenido del Artículo
             </x-label>
-            <x-textarea name="body" class="w-full" placeholder="Ingrese el contenido del artículo"
-                        row="12">
+            <x-textarea name="body" class="w-full" placeholder="Ingrese el contenido del artículo" row="12">
                 {{ old('body', $post->body) }}
             </x-textarea>
         </div>
@@ -111,7 +122,7 @@
             <x-select name="published" class="w-full">
 
 
-                @if($post->published == 0)
+                @if ($post->published == 0)
                     <option value="0">No Publicado</option>
                     <option value="1">Publicado</option>
                 @else
@@ -142,8 +153,7 @@
             </x-label>
             <x-select name="category_id" class="w-full">
                 @foreach ($categories as $category)
-                    <option @selected(old('category_id', $post->category_id) == $category->id)
-                        value="{{ $category->id }}">
+                    <option @selected(old('category_id', $post->category_id) == $category->id) value="{{ $category->id }}">
                         {{ $category->name }}
                     </option>
                 @endforeach
@@ -154,10 +164,9 @@
             <x-label class="mb-2 ">
                 Usuarios
             </x-label>
-            <x-select name="user_id" class="w-full" >
+            <x-select name="user_id" class="w-full">
                 @foreach ($users as $user)
-                    <option @selected(old('user_id', $post->user_id) == $user->id)
-                        value="{{ $user->id }}">
+                    <option @selected(old('user_id', $post->user_id) == $user->id) value="{{ $user->id }}">
                         {{ $user->name }}
                     </option>
                 @endforeach
@@ -181,22 +190,45 @@
     </form>
 
     @push('js')
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js">
-        </script>
+        {{-- <script src="https://code.jquery.com/jquery-3.7.1.min.js">
+        </script> --}}
         {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js">
         </script> --}}
 
-        <script>
+        {{-- <script>
             $(document).ready(function() {
                 $('.select2').select2();
             });
+        </script> --}}
+
+        <script>
+            function deletePost() {
+                let form = document.getElementById('formDelete');
+                form.submit();
+            }
         </script>
 
         <script>
-            function deletePost()
-            {
-                let form = document.getElementById('formDelete');
-                form.submit();
+            function previewImage(event, querySelector) {
+
+                //Recuperamos el input que desencadeno la acción
+                const input = event.target;
+
+                //Recuperamos la etiqueta img donde cargaremos la imagen
+                $imgPreview = document.querySelector(querySelector);
+
+                // Verificamos si existe una imagen seleccionada
+                if (!input.files.length) return
+
+                //Recuperamos el archivo subido
+                file = input.files[0];
+
+                //Creamos la url
+                objectURL = URL.createObjectURL(file);
+
+                //Modificamos el atributo src de la etiqueta img
+                $imgPreview.src = objectURL;
+
             }
         </script>
     @endpush

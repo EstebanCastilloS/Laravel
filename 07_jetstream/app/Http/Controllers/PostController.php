@@ -8,6 +8,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -101,11 +102,19 @@ class PostController extends Controller
         // //dd($post);
         // $post->update();
 
+        $data = $request->all();
+
         session()->flash('swal', [
             'type' => 'success',
             'title' => 'Post actualizado correctamente',
             'text' => 'El post se actualizó con éxito',
         ]);
+
+        if($request->file('image')){
+            $data['image_path'] = Storage::put('posts', $request->image);
+        }
+
+        //$post->update($data);
 
         return redirect()->route('admin.posts.index', $post);
     }
