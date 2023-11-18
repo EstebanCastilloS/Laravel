@@ -23,3 +23,12 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/miembros',function(){
+    return view('miembros.index');
+})->name('miembros.index');
+
+Route::get('/miembros/create',function(){
+    return view('miembros.create');
+})->name('miembros.create');
+//Route::resource('/miembros'[]);
