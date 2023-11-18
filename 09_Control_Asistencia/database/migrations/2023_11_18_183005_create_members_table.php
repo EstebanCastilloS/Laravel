@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->string('full name', 255);
+            $table->string('full_name', 255);
             $table->string('address', 255);
             $table->string('phone', 255);
             $table->date('birthdate');
@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('email', 255)->unique();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->string('ministry', 255);
+            $table->string('photo', 255)->nullable();
+            $table->date('date_admission');
             $table->timestamps();
         });
     }
