@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MemberController;
+use App\Models\Member;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,11 +26,17 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/miembros',function(){
-    return view('miembros.index');
-})->name('miembros.index');
+// Route::get('/miembros',function(){
+//     return view('miembros.index');
+// })->name('miembros.index');
 
-Route::get('/miembros/create',function(){
-    return view('miembros.create');
-})->name('miembros.create');
-//Route::resource('/miembros'[]);
+// Route::get('/miembros/create',function(){
+//     return view('miembros.create');
+// })->name('miembros.create');
+
+//crear ruta para miembros con el controlador
+Route::resource('/miembros',MemberController::class)->names('miembros');
+
+
+
+

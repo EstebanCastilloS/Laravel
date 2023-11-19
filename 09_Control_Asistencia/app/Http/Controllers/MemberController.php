@@ -13,7 +13,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        $members = Member::all();
+        return view('miembros.index', compact('members'));
     }
 
     /**
@@ -21,7 +22,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        return view('miembros.create');
     }
 
     /**

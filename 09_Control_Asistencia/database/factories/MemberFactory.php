@@ -16,8 +16,25 @@ class MemberFactory extends Factory
      */
     public function definition(): array
     {
+        $genero = ["Masculino", "Femenino", "Otro"];
+        $status = ['active', 'inactive'];
+        $ministerio = ["Jovenes", "Niños", "Adolescentes", "Adultos", "Ancianos"];
+
+
         return [
-            //
+
+
+            'full_name' => $this->faker->name(),
+            'address' => $this->faker->address(),
+            'phone' => $this->faker->phoneNumber(),
+            'birthdate' => $this->faker->dateTime(),
+            'gender' => $genero[rand(0, 2)],
+            'email' => $this->faker->unique()->safeEmail(),
+            'status' => $status[rand(0, 1)],
+            'ministry' => $ministerio[rand(0, 4)],
+            'photo' => $this->faker->imageUrl(1280, 720),
+            'date_admission' => $this->faker->dateTime(),
+
         ];
     }
 }

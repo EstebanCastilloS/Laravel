@@ -16,8 +16,16 @@ class Member extends Model
 
     protected $fillable =
     [
-        'name',
-
+        'full_name',
+        'address',
+        'phone',
+        'birthdate',
+        'gender',
+        'email',
+        'status',
+        'ministry',
+        'photo',
+        'date_admission',
     ];
     protected $guarded = ['id'];
 }
