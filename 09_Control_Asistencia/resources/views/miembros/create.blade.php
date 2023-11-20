@@ -119,8 +119,8 @@
                         <br/>
                         <div class="row">
                             <div class="col-md-12">
-                                <button class="btn btn-primary " style="margin-right: 10px">Guardar</button>
-                                <button class="btn btn-danger">Cancelar</button>
+                                <button class="btn btn-primary " style="margin-right: 10px" type="submit">Guardar</button>
+                                <a href="" class="btn btn-danger ">Cancelar</a>
                             </div>
                         </div>
                     </div>
