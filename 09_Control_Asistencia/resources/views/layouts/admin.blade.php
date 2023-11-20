@@ -15,6 +15,17 @@
     <link rel="stylesheet" href={{ asset('dist/css/adminlte.min.css') }}>
     {{-- Iconos de Botstrap --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+
+    {{-- Jquery --}}
+    <script src="{{ asset('plugins/jquery/jquery.js') }}"></script>
+
+    {{-- SweetAlert2 --}}
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -167,8 +178,8 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ route('/') }}" class="brand-link">
-                <img src="{{ url('/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
+                <img src="{{ url('/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Sistema de Control</span>
             </a>
 
@@ -177,7 +188,8 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ url('/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                        <img src="{{ url('/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                            alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -269,9 +281,7 @@
             <div class="float-right d-none d-sm-inline">
                 Anything you want
             </div>
-            <!-- Default to the left -->
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
+
         </footer>
     </div>
     <!-- ./wrapper -->
@@ -284,6 +294,103 @@
     <script src={{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}></script>
     <!-- AdminLTE App -->
     <script src={{ asset('dist/js/adminlte.min.js') }}></script>
+
+
+    <!-- DataTables  & Plugins -->
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('plugins/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('plugins/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+
+    <!-- Page specific script -->
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "Print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            // $('#example2').DataTable({
+            //     "paging": true,
+            //     "lengthChange": false,
+            //     "searching": false,
+            //     "ordering": true,
+            //     "info": true,
+            //     "autoWidth": false,
+            //     "responsive": true,
+            // });
+        });
+
+        //     $("#example1").DataTable({
+        //     "responsive": true,
+        //     "lengthChange": false,
+        //     "autoWidth": false,
+        //     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+        //     "language": {
+        //         "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        //     }
+        // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+        // $("#example1").DataTable({
+        //     "pageLength": 10,
+        //     "Language": {
+        //         "emptyTable": "No hay datos disponibles en la tabla",
+        //         "info": "Mostrando _START_ a _END_ de _TOTAL_ Miembros",
+        //         "infoEmpty": "Mostrando 0 a 0 de 0 Miembros",
+        //         "infoFiltered": "(filtrado de _MAX_ Miembros totales)",
+        //         "infoPostFix": "",
+        //         "thousands": ",",
+        //         "lengthMenu": "Mostrar _MENU_ Miembros",
+        //         "loadingRecords": "Cargando...",
+        //         "processing": "Procesando...",
+        //         "search": "Buscar:",
+        //         "zeroRecords": "No se encontraron Miembros coincidentes",
+        //         "paginate": {
+        //             "first": "Primero",
+        //             "last": "Ultimo",
+        //             "next": "Siguiente",
+        //             "previous": "Anterior"
+        //         },
+        //     },
+        //     "responsive": true,
+        //     "lengthChange": true,
+        //     "autoWidth": false,
+        //     "buttons": [
+        //         extends: 'collection',
+        //         text: 'Reportes',
+        //         orienation: 'landscape',
+        //         buttons: [{
+        //             text: 'Copiar',
+        //             extend: 'copy',
+        //         }, {
+        //             text: 'Excel',
+        //         }, {
+        //             text: 'PDF',
+        //         }, {
+        //             text: 'Imprimir',
+        //             extend: 'print',
+        //         }, {
+        //             extend: 'colvis',
+        //             text: 'Visor de Columnas',
+        //             collectionLayout: 'fixed three-column'
+
+        //         }
+        //     ],
+        // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+        // });
+
+
+    </script>
 </body>
 
 </html>
