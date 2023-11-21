@@ -30,7 +30,24 @@ class MemberController extends Controller
      */
     public function store(StoreMemberRequest $request)
     {
-        //
+        $member = new Member();
+        $member->full_name = $request->full_name;
+        $member->address = $request->address;
+        $member->phone = $request->phone;
+        $member->birthdate = $request->birthdate;
+        $member->gender = $request->gender;
+        $member->email = $request->email;
+        $member->status = $request->status;
+        $member->ministry = $request->ministry;
+        $member->photo = $request->file('photo')->store('photosMembers', 'public');
+        $member->date_admission = $request->date_admission;
+        //dd($member);
+        $member->save();
+
+        //Member::create($request->all());
+
+        return redirect()->route('miembros.index');
+
     }
 
     /**

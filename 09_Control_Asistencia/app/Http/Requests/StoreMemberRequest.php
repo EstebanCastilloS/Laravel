@@ -11,7 +11,7 @@ class StoreMemberRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,19 @@ class StoreMemberRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+
+            'full_name' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'birthdate' => 'required',
+            'gender' => 'required',
+            //vlidar campo email unico
+            'email' => 'required|unique:members',
+            'status' => 'required',
+            'ministry' => 'required',
+            'photo' => 'required',
+            'date_admission' => 'required',
+
         ];
     }
 }
