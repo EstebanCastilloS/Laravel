@@ -39,7 +39,13 @@ class MemberController extends Controller
         $member->email = $request->email;
         $member->status = $request->status;
         $member->ministry = $request->ministry;
-        $member->photo = $request->file('photo')->store('photosMembers', 'public');
+
+        if ($request->hasFile('photo')) {
+            $member->photo = $request->file('photo')->store('photosMembers', 'public');
+        }else{
+            $member->photo = $request->photo;
+        }
+
         $member->date_admission = $request->date_admission;
         //dd($member);
         $member->save();

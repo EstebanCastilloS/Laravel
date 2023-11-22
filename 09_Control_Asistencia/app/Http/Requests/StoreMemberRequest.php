@@ -32,7 +32,7 @@ class StoreMemberRequest extends FormRequest
             'email' => 'required|unique:members',
             'status' => 'required',
             'ministry' => 'required',
-            'photo' => 'required',
+            'photo' => '',
             'date_admission' => 'required',
 
         ];

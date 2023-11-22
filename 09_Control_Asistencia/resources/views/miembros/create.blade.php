@@ -137,7 +137,7 @@
                                         <div class="col-md-6">
                                             <div class="fotm-group">
                                                 <label for="">Fecha de Ingreso</label>
-                                                <input type="date_admission" name="date_admission" class="form-control">
+                                                <input type="date" name="date_admission" class="form-control">
                                                 @error('date_admission')
                                                     <small style="color: red">El campo Fecha de Ingreso es Requerido</small>
                                                 @enderror
