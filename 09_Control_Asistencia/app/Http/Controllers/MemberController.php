@@ -48,11 +48,16 @@ class MemberController extends Controller
 
         $member->date_admission = $request->date_admission;
         //dd($member);
+
+        //mensaje de sweet alert
+
+
+
         $member->save();
 
         //Member::create($request->all());
 
-        return redirect()->route('miembros.index');
+        return redirect()->route('miembros.index')->with('mensaje', 'Miembro creado con éxito!');
 
     }
 

@@ -4,6 +4,14 @@
     <div class="content" style="margin-left: 20px">
         <h1>Create -Creación de Nuevo Miembros</h1><br>
 
+        {{-- <script>
+            Swal.fire({
+                title: "The Internet?",
+                text: "That thing is still around?",
+                icon: "sucess"
+                });
+        </script> --}}
+
         <div class="row">
             <div class="col-md-11">
                 <div class="card card-outline card-primary">

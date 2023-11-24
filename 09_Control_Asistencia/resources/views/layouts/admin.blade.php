@@ -26,6 +26,7 @@
     <script src="{{ asset('plugins/jquery/jquery.js') }}"></script>
 
     {{-- SweetAlert2 --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">

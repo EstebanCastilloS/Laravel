@@ -3,6 +3,15 @@
 @section('content')
     <div class="content" style="margin-left: 20px">
         <h1>Index - Listado de Miembros</h1>
+        @if ($mensaje = Session::get('mensaje'))
+            <script>
+                Swal.fire({
+                    title: "Buena Trabajo",
+                    text: "{{ $mensaje }}",
+                    icon: "success"
+                    });
+            </script>
+        @endif
 
         <div class="row">
             <div class="col-md-12">
