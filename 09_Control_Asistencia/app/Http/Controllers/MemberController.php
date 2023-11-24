@@ -13,7 +13,11 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $members = Member::all();
+
+        $members = Member::orderBy('id', 'desc')->get();
+
+        //dump($members);
+
         return view('miembros.index', compact('members'));
     }
 
@@ -66,7 +70,7 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-        //
+        return view('miembros.show', compact('member'));
     }
 
     /**
