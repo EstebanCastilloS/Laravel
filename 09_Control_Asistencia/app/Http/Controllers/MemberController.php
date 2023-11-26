@@ -71,7 +71,7 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        $member = Member::find($id);
+        $member = Member::findOrFail($id);
         //dd($member);
         return view('miembros.show', compact('member'));
     }
@@ -81,7 +81,8 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        //
+        $member = Member::findOrFail($member->id);
+        return view('miembros.edit', compact('member'));
     }
 
     /**
@@ -89,7 +90,17 @@ class MemberController extends Controller
      */
     public function update(UpdateMemberRequest $request, Member $member)
     {
-        //
+        // $member->full_name = $request->full_name;
+        // $member->address = $request->address;
+        // $member->phone = $request->phone;
+        // $member->birthdate = $request->birthdate;
+        // $member->gender = $request->gender;
+        // $member->email = $request->email;
+        // $member->status = $request->status;
+        // $member->ministry = $request->ministry;
+
+
+
     }
 
     /**

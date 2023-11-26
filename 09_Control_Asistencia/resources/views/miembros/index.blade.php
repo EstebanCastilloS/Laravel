@@ -469,7 +469,7 @@
                                         <td>{{ $member->date_admission }}</td>
                                         <td>
                                             <a href="{{ route('miembros.show', $member->id) }}" type = "button" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i></a>
-                                            <a href="#" type = "button"  class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
+                                            <a href="{{ route('miembros.edit', $member->id) }}" type = "button"  class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
                                             <a href="#" type = "button"  class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
 
                                             {{-- <a href="{{ route('members.show', $member->id) }}" class="btn btn-primary btn-sm">Ver</a>
