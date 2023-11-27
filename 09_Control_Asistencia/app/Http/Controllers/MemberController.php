@@ -79,9 +79,9 @@ class MemberController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Member $member)
+    public function edit($id)
     {
-        $member = Member::findOrFail($member->id);
+        $member = Member::find($id);
         return view('miembros.edit', compact('member'));
     }
 

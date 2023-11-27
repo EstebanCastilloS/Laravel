@@ -472,9 +472,6 @@
                                             <a href="{{ route('miembros.edit', $member->id) }}" type = "button"  class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
                                             <a href="#" type = "button"  class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
 
-                                            {{-- <a href="{{ route('members.show', $member->id) }}" class="btn btn-primary btn-sm">Ver</a>
-                                            <a href="{{ route('members.edit', $member->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                                            <a href="{{ route('members.destroy', $member->id) }}" class="btn btn-danger btn-sm">Eliminar</a> --}}
                                         </td>
                                     </tr>
                                 @endforeach
