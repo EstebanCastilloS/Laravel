@@ -120,8 +120,13 @@ class MemberController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Member $member)
+    public function destroy($id)
     {
-        //
+        $member = Member::find($id);
+        $member->delete($id);
+
+
+        return redirect()->route('miembros.index')->with('mensaje', 'Miembro eliminado con éxito!');
     }
+
 }

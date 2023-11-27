@@ -32,7 +32,7 @@ class MemberFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'status' => $status[rand(0, 1)],
             'ministry' => $ministerio[rand(0, 4)],
-            'photo' => $this->faker->imageUrl(1280, 720),
+            'photo' => '',
             'date_admission' => $this->faker->dateTime(),
 
         ];

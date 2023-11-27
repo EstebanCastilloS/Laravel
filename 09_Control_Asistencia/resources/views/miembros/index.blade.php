@@ -470,7 +470,12 @@
                                         <td>
                                             <a href="{{ route('miembros.show', $member->id) }}" type = "button" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i></a>
                                             <a href="{{ route('miembros.edit', $member->id) }}" type = "button"  class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
-                                            <a href="#" type = "button"  class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                                            {{-- <a href="{{ route('miembros.destroy', $member->id) }}" type = "button"  class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a> --}}
+                                            <form action="{{ route('miembros.destroy', $member->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                            </form>
 
                                         </td>
                                     </tr>
