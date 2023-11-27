@@ -11,7 +11,7 @@ class UpdateMemberRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,20 @@ class UpdateMemberRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+
+
+
+            'full_name' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'birthdate' => 'required',
+            'gender' => 'required',
+            //vlidar campo email unico
+            'email' => 'required',
+            'status' => 'required',
+            'ministry' => 'required',
+            'photo' => '',
+            'date_admission' => 'required',
         ];
     }
 }

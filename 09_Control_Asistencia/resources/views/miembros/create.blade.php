@@ -189,7 +189,7 @@
                                             <div class="col-md-6">
                                                 <div class="fotm-group">
                                                     <label for="">Fotografía</label>
-                                                    <input type="file" name="photo" class="form-control"
+                                                    <input type="file" name="photo" class="form-control w-full"
                                                         id="file-input" onchange="archivo(event)" value = "{{ old('full_name') }}">
                                                     <center><output id="list"></output></center>
                                                     @error('photo')

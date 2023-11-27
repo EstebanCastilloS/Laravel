@@ -6,6 +6,7 @@ use App\Models\Member;
 use App\Http\Requests\StoreMemberRequest;
 use App\Http\Requests\UpdateMemberRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MemberController extends Controller
 {
@@ -88,19 +89,32 @@ class MemberController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMemberRequest $request, Member $member)
+    public function update(UpdateMemberRequest $request, $id)
     {
-        // $member->full_name = $request->full_name;
-        // $member->address = $request->address;
-        // $member->phone = $request->phone;
-        // $member->birthdate = $request->birthdate;
-        // $member->gender = $request->gender;
-        // $member->email = $request->email;
-        // $member->status = $request->status;
-        // $member->ministry = $request->ministry;
+        $member = Member::find($id);
 
+        // $this->updateMember($member, $request);
+        // $member->save();
+        // return redirect()->route('miembros.index')->with('mensaje', 'Miembro actualizado con éxito!');
 
+        $member->full_name = $request->full_name;
+        $member->address = $request->address;
+        $member->phone = $request->phone;
+        $member->birthdate = $request->birthdate;
+        $member->gender = $request->gender;
+        $member->email = $request->email;
+        $member->status = $request->status;
+        $member->ministry = $request->ministry;
 
+        if ($request->hasFile('photo')) {
+            //eliminar imagen anterior cuando se actualiza
+            Storage::delete('public/' . $member->photo);
+            $member->photo = $request->file('photo')->store('photosMembers', 'public');
+        }
+        $member->date_admission = $request->date_admission;
+        $member->update();
+
+        return redirect()->route('miembros.index');
     }
 
     /**

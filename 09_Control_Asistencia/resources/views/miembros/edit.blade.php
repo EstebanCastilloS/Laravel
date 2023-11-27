@@ -13,9 +13,11 @@
                     </div>
 
                     <div class="card-body" style="">
-                        <form action="{{ route('miembros.update') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('miembros.update', $member->id) }}" method="POST"
+                            enctype="multipart/form-data">
 
                             @csrf
+                            {{ method_field('PATCH') }}
                             <div class="row">
 
                                 <div class="col-md-12">
@@ -172,36 +174,60 @@
 
                                         {{-- Fotografía --}}
                                         <div class="col-md-6">
-                                            <div class="col-md-6">
-                                                <div class="fotm-group">
-                                                    <label for="">Fotografía</label>
-                                                    <input type="file" name="photo" class="form-control"
-                                                        id="file-input" onchange="archivo(event)">
-                                                    <center>
-                                                        <output>
-                                                            @if ($member->photo == '')
-
-                                                                @if ($member->gender == 'Masculino')
-                                                                    <img src="{{ asset('images/avatar_hombre_1.jpg') }}" width="150px" alt="">
-
-                                                                @else
-                                                                    <img src="{{ asset('images/avatar_mujer.png') }}" width="150px" alt="">
-
-                                                                @endif
-
+                                            <div class="fotm-group">
+                                                <label for="">Fotografía</label>
+                                                <input type="file" name="photo" class="form-control"
+                                                    id="file-input" onchange="archivo(event)">
+                                                <center>
+                                                    <output id="list">
+                                                        @if ($member->photo == '')
+                                                            @if ($member->gender == 'Masculino')
+                                                                <img src="{{ asset('images/avatar_hombre_1.jpg') }}"
+                                                                    width="150px" alt="">
                                                             @else
-                                                                <center class="pd-1">
-                                                                    <img src="{{ asset('storage') . '/' . $member->photo }}" alt=""
-                                                                        id="imgSalida" width="200px" height="200px" >
-                                                                </center>
-
+                                                                <img src="{{ asset('images/avatar_mujer.png') }}"
+                                                                    width="150px" alt="">
                                                             @endif
+                                                        @else
+                                                            <center class="pd-1">
+                                                                <img src="{{ asset('storage') . '/' . $member->photo }}"
+                                                                    alt="" id="imgSalida" width="200px"
+                                                                    height="200px">
+                                                            </center>
+                                                        @endif
 
-                                                        </output>
-                                                    </center>
+                                                    </output>
+                                                </center>
 
-                                                </div>
+                                                <script>
+                                                    function archivo(evt) {
+                                                        var files = evt.target.files; // FileList object
+
+                                                        // Obtenemos la imagen del campo "file".
+                                                        for (var i = 0, f; f = files[i]; i++) {
+                                                            //Solo admitimos imágenes.
+                                                            if (!f.type.match('image.*')) {
+                                                                continue;
+                                                            }
+
+                                                            var reader = new FileReader();
+
+                                                            reader.onload = (function(theFile) {
+                                                                return function(e) {
+                                                                    // Insertamos la imagen
+                                                                    document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target
+                                                                        .result, '"width="50%" title="', escape(theFile.name), '"/>'
+                                                                    ].join('');
+                                                                };
+                                                            })(f);
+
+                                                            reader.readAsDataURL(f);
+                                                        }
+                                                    }
+                                                </script>
+
                                             </div>
+
 
 
 
