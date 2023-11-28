@@ -203,9 +203,9 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        <li class="nav-item">
 
-                            {{-- sección de INICIO MIEMBROS --}}
+                        {{-- sección de MIEMBROS --}}
+                        <li class="nav-item">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas">
                                     <i class="bi bi-file-person"></i>
@@ -215,7 +215,8 @@
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            {{-- sección FINAL MIEMBROS --}}
+
+
 
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -232,6 +233,41 @@
                                 </li>
                             </ul>
                         </li>
+                        {{-- sección FINAL MIEMBROS --}}
+
+                        {{-- sección de MINISTERIOS --}}
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas">
+                                    <i class="bi bi-building"></i>
+                                </i>
+                                <p>
+                                    Ministerios
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+
+
+
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('ministerios.create') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Nuevo Ministerio</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('ministerios.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Listado de Ministerios</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        {{-- sección FINAL MINISTERIOS --}}
+
+
                         <li class="nav-item">
 
                             <a class="nav-link" href="{{ route('logout') }}"

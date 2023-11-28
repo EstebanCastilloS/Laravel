@@ -465,7 +465,18 @@
                                         <td>{{ $member->full_name }}</td>
                                         <td>{{ $member->phone }}</td>
                                         <td>{{ $member->email }}</td>
-                                        <td>{{ $member->status == 'active' ? 'Activado' : 'Desactivado' }}</td>
+                                        <td>
+                                            @if ($member->status == 'active')
+                                                <button class="btn btn-success btn-sm" style="border-radius: 20px">
+                                                    {{ $member->status == 'active' ? 'Activado' : 'Desactivado' }}
+                                                </button>
+                                            @else
+                                                <button class="btn btn-danger btn-sm" style="border-radius: 20px">
+                                                    {{ $member->status == 'active' ? 'Activado' : 'Desactivado' }}
+                                                </button>
+                                            @endif
+
+                                        </td>
                                         <td>{{ $member->date_admission }}</td>
                                         <td>
                                             <a href="{{ route('miembros.show', $member->id) }}" type = "button" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i></a>

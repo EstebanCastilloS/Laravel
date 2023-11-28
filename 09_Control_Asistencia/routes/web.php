@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\MinistryController;
 use App\Models\Member;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +37,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //crear ruta para miembros con el controlador
 Route::resource('/miembros',MemberController::class)->names('miembros');
+Route::resource('/ministerios',MinistryController::class)->names('ministerios');
 
 
 
