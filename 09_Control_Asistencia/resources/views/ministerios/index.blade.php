@@ -32,43 +32,42 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Nombre y Apellido</th>
-                                    <th>Telefono</th>
-                                    <th>email</th>
+                                    <th>Nombre Ministerio</th>
+                                    <th>Descripción</th>
                                     <th>Estado</th>
-                                    <th>Agregado</th>
+                                    <th>Fecha de Ingreso</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($members as $member)
+                                @foreach ($ministries as $ministry)
                                     <tr>
-                                        <td>{{ $member->id }}</td>
-                                        <td>{{ $member->full_name }}</td>
-                                        <td>{{ $member->phone }}</td>
-                                        <td>{{ $member->email }}</td>
+                                        <td>{{ $ministry->id }}</td>
+                                        <td>{{ $ministry->name }}</td>
+                                        <td>{{ $ministry->description }}</td>
                                         <td>
-                                            @if ($member->status == 'active')
+                                            @if ($ministry->status == 'active')
                                                 <button class="btn btn-success btn-sm" style="border-radius: 20px">
-                                                    {{ $member->status == 'active' ? 'Activado' : 'Desactivado' }}
+                                                    {{ $ministry->status == 'active' ? 'Activado' : 'Desactivado' }}
                                                 </button>
                                             @else
                                                 <button class="btn btn-danger btn-sm" style="border-radius: 20px">
-                                                    {{ $member->status == 'active' ? 'Activado' : 'Desactivado' }}
+                                                    {{ $ministry->status == 'active' ? 'Activado' : 'Desactivado' }}
                                                 </button>
                                             @endif
 
                                         </td>
-                                        <td>{{ $member->date_admission }}</td>
+                                        <td>{{ $ministry->date_admission }}</td>
                                         <td>
-                                            <a href="{{ route('miembros.show', $member->id) }}" type = "button" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i></a>
-                                            <a href="{{ route('miembros.edit', $member->id) }}" type = "button"  class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
-                                            {{-- <a href="{{ route('miembros.destroy', $member->id) }}" type = "button"  class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a> --}}
-                                            <form action="{{ route('miembros.destroy', $member->id) }}" method="POST">
+                                            <a href="{{ route('ministerios.show', $ministry->id) }}" type = "button" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i></a>
+                                            <a href="{{ route('ministerios.edit', $ministry->id) }}" type = "button"  class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
+                                            <a href="{{ route('ministerios.destroy', $ministry->id) }}" type = "button"  class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+
+                                            {{-- <form action="{{ route('miembros.destroy', $member->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
-                                            </form>
+                                            </form> --}}
 
                                         </td>
                                     </tr>

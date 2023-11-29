@@ -13,8 +13,8 @@ class MinistryController extends Controller
      */
     public function index()
     {
-        $ministry = Ministry::all();
-        return view('ministries.index', compact('ministry'));
+        $ministries = Ministry::all();
+        return view('ministerios.index', compact('ministries'));
     }
 
     /**
@@ -22,7 +22,7 @@ class MinistryController extends Controller
      */
     public function create()
     {
-        return view('ministries.create');
+        return view('ministerios.create');
     }
 
     /**
