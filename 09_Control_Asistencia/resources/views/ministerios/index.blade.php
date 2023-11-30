@@ -21,7 +21,7 @@
                     </div>
                     <div class="card-tools">
                         <a href="{{ route('ministerios.create') }}" class="btn btn-primary">
-                            <i class="bi bi-file-plus"></i>Agregar Ministerio
+                            <i class="bi bi-file-plus"></i>Agregar Nuevo Ministerio
                         </a>
                     </div>
                     <div class="card-body" style="display: block">
@@ -44,7 +44,7 @@
                                     <tr>
                                         <td>{{ $ministry->id }}</td>
                                         <td>{{ $ministry->name }}</td>
-                                        <td>{{ $ministry->description }}</td>
+                                        <td>{!! $ministry->description !!}</td>
                                         <td>
                                             @if ($ministry->status == 'active')
                                                 <button class="btn btn-success btn-sm" style="border-radius: 20px">
@@ -63,7 +63,7 @@
                                             <a href="{{ route('ministerios.edit', $ministry->id) }}" type = "button"  class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
                                             <a href="{{ route('ministerios.destroy', $ministry->id) }}" type = "button"  class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
 
-                                            {{-- <form action="{{ route('miembros.destroy', $member->id) }}" method="POST">
+                                            {{-- <form action="{{ route('ministerios.destroy', $ministry->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>

@@ -30,7 +30,14 @@ class MinistryController extends Controller
      */
     public function store(StoreMinistryRequest $request)
     {
-        //
+        $ministry = new Ministry();
+        $ministry->name = $request->name;
+        $ministry->description = $request->description;
+        $ministry->status = $request->status;
+        $ministry->date_admission = $request->date_admission;
+        //dd($ministry);
+        $ministry->save();
+        return redirect()->route('ministerios.index')->with('mensaje', 'El ministerio se registró con éxito');
     }
 
     /**
