@@ -11,7 +11,7 @@ class UpdateMinistryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateMinistryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|max:255',
+            'description' => 'required|max:255',
+            'status' => 'required|in:active,inactive',
+            'date_admission' => 'required|date',
         ];
     }
 }

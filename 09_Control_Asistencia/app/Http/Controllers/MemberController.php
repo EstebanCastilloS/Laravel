@@ -123,6 +123,7 @@ class MemberController extends Controller
     public function destroy($id)
     {
         $member = Member::find($id);
+        Storage::delete('public/' . $member->photo);
         $member->delete($id);
 
 

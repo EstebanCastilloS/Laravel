@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="content" style="margin-left: 20px">
-        <h1>Create -Creación de Nuevo Miembros</h1><br>
+        <h1>Create -Creación de Nuevo Ministerio</h1><br>
 
         {{-- <script>
             Swal.fire({
