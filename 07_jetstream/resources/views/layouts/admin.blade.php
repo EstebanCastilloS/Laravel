@@ -47,7 +47,8 @@
     <div x-show="open"
         x-on:click="open = false"
         style = "display:none"
-        class="bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30 sm:hidden"></div>
+        class="bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-30 sm:hidden">
+    </div>
 
     @stack('modals')
 

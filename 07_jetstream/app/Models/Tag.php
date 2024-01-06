@@ -9,7 +9,7 @@ class Tag extends Model
 {
     use HasFactory;
 
-    //relacion mucho a muchos polimorfica con post
+    //relacion mucho a muchos polimorfica Inversa con post
     public function posts(){
         return $this->morphedByMany(Post::class, 'taggable');
     }
