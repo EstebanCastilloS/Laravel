@@ -19,7 +19,7 @@ return new class extends Migration
             //$table->unsignedInteger('iva')->nullable();
             $table->unsignedInteger('total');
             $table->unsignedInteger('pago')->nullable();
-            $table->date('fecha');
+            $table->date('date');
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('client_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
