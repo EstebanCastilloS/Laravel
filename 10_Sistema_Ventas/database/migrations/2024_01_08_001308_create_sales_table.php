@@ -20,10 +20,8 @@ return new class extends Migration
             $table->unsignedInteger('total');
             $table->unsignedInteger('pago')->nullable();
             $table->date('date');
-            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('client_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-
-
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('customer_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });
