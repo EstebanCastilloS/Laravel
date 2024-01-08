@@ -26,7 +26,7 @@ return new class extends Migration
             $table->boolean('active')->default(true); //activo
             $table->tinyInteger('iva')->default(0); //iva
 
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
