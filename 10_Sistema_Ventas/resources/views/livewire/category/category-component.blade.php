@@ -1,6 +1,6 @@
 <div>
 
-    <x-card cardTitle="Listado Categorias" cardFooter="">
+    <x-card cardTitle="Listado Categorias ({{ $this->totalRegistros }})" cardFooter="">
         <x-slot:cardTools>
             <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalCategory">Crear Categoría</a>
         </x-slot:cardTools>
@@ -40,11 +40,13 @@
 
     <x-modal modalId="modalCategory" modalTitle="Categorias">
 
-        <form action="">
-            <p>
-                Form
-            </p>
-            <button type="button" class="btn btn-primary float-right">Guardar</button>
+        <form wire:submit="store">
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Nombre Categoría">
+                </div>
+            </div>
+            <button  class="btn btn-primary float-right">Guardar</button>
         </form>
 
     </x-modal>
