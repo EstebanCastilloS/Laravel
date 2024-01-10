@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? config('app')}} </title>
+    <title>{{ $title ?? config('app') }} </title>
 
     @include('components.layouts.partials.styles')
 </head>
@@ -53,6 +53,14 @@
 
     @include('components.layouts.partials.scripts')
     <!-- PLUGINS -->
+
+    <script>
+        document.addEventListener('livewire:init', function() {
+            Livewire.on('close-modal', (idModal)=>{
+                $('#'+idModal).modal('hide');
+            })
+        })
+    </script>
 
 </body>
 

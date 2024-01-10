@@ -53,6 +53,7 @@
                     @enderror
                 </div>
             </div>
+            <hr>
             <button  class="btn btn-primary float-right">Guardar</button>
         </form>
 
