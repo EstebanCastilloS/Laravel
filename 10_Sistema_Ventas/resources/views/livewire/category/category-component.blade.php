@@ -43,7 +43,14 @@
         <form wire:submit="store">
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Nombre Categoría">
+
+                    <input wire:model='name' type="text" class="form-control" placeholder="Nombre Categoría">
+                    @error('name')
+                        <div class="alert alert-danger w-100 mt-2">
+                            {{ $message }}
+                        </div>
+
+                    @enderror
                 </div>
             </div>
             <button  class="btn btn-primary float-right">Guardar</button>
