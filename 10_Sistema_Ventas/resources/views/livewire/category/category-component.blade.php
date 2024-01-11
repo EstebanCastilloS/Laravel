@@ -41,9 +41,9 @@
     <x-modal modalId="modalCategory" modalTitle="Categorias">
 
         <form wire:submit="store">
-            <div class="row">
-                <div class="col">
-
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <label for="name">Nombre Categoría</label>
                     <input wire:model='name' type="text" class="form-control" placeholder="Nombre Categoría">
                     @error('name')
                         <div class="alert alert-danger w-100 mt-2">
