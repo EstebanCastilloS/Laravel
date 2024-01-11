@@ -21,6 +21,9 @@ class CategoryComponent extends Component
     //busqueda
     public $search = '';
 
+    //paginacion
+    public $cant = 5;
+
     //propiedad de modelo
     public $name;
 
@@ -31,7 +34,7 @@ class CategoryComponent extends Component
         }
         $this->totalRegistros = Category::count();
         $categories = Category::where('name','like','%'.$this->search.'%')
-            ->orderBy('id','desc')->paginate(5);
+            ->orderBy('id','desc')->paginate($this->cant);
         //$categories = collect();
         return view('livewire.category.category-component', compact('categories'));
     }
