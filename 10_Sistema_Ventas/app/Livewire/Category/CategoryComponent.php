@@ -26,6 +26,7 @@ class CategoryComponent extends Component
 
     //propiedad de modelo
     public $name;
+    public $id;
 
     public function render()
     {
@@ -72,7 +73,15 @@ class CategoryComponent extends Component
 
         $this->reset(['name']);
 
+    }
 
+    public function edit(Category $category)
+    {
+        $this->id = $category->id;
 
+        dump($category);
+        // $this->id = $category->id;
+        // $this->name = $category->name;
+        // $this->dispatch('open-modal','modalCategory');
     }
 }

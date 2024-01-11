@@ -19,12 +19,12 @@
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
                     <td>
-                        <a href="" class="btn btn-success">
+                        <a href="#" class="btn btn-success">
                             <i class="far fa-eye"></i>
                         </a>
                     </td>
                     <td>
-                        <a href="" class="btn btn-primary">
+                        <a href="#" wire:click="edit({{ $category->id }})" class="btn btn-primary">
                             <i class="far fa-edit"></i>
                         </a>
                     </td>
@@ -51,7 +51,7 @@
 
     <x-modal modalId="modalCategory" modalTitle="Categorias">
 
-        <form wire:submit="store">
+        <form wire:submit="{{ $id==0 ? 'store':'update' }}">
             <div class="form-row">
                 <div class="form-group col-12">
                     <label for="name">Nombre Categoría</label>
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <hr>
-            <button class="btn btn-primary float-right">Guardar</button>
+            <button class="btn btn-primary float-right">{{ $id==0 ? 'Guardar':'Editar' }}</button>
         </form>
 
     </x-modal>
