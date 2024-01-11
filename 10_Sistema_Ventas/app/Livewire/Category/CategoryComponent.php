@@ -18,13 +18,20 @@ class CategoryComponent extends Component
     //propiedades de la clase
     public $totalRegistros = 0;
 
+    //busqueda
+    public $search = '';
+
     //propiedad de modelo
     public $name;
 
     public function render()
     {
+        if($this->search != ''){
+            $this->resetPage();
+        }
         $this->totalRegistros = Category::count();
-        $categories = Category::orderBy('id','desc')->paginate(5);
+        $categories = Category::where('name','like','%'.$this->search.'%')
+            ->orderBy('id','desc')->paginate(5);
         //$categories = collect();
         return view('livewire.category.category-component', compact('categories'));
     }
