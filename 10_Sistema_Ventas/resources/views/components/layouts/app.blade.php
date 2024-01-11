@@ -61,6 +61,12 @@
                 $('#'+idModal).modal('hide');
             })
         })
+
+        document.addEventListener('livewire:init', function() {
+            Livewire.on('open-modal', (idModal)=>{
+                $('#'+idModal).modal('show');
+            })
+        })
     </script>
 
 </body>

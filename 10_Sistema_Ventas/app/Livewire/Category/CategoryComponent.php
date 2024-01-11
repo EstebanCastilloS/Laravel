@@ -77,11 +77,10 @@ class CategoryComponent extends Component
 
     public function edit(Category $category)
     {
-        $this->id = $category->id;
 
-        dump($category);
-        // $this->id = $category->id;
-        // $this->name = $category->name;
-        // $this->dispatch('open-modal','modalCategory');
+        //dump($category);
+        $this->id = $category->id;
+        $this->name = $category->name;
+        $this->dispatch('open-modal','modalCategory');
     }
 }
