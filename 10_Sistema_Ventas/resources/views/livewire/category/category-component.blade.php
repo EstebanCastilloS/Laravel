@@ -14,25 +14,32 @@
                 <th width="3%">Eliminar</th>
             </x-slot>
 
-            <tr>
-                <td>1</td>
-                <td>Esteban</td>
-                <td>
-                    <a href="" class="btn btn-success">
-                        <i class="far fa-eye"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="" class="btn btn-primary">
-                        <i class="far fa-edit"></i>
-                    </a>
-                </td>
-                <td>
-                    <a href="" class="btn btn-danger">
-                        <i class="far fa-trash-alt"></i>
-                    </a>
-                </td>
-            </tr>
+            @forelse ($categories as $category)
+                <tr>
+                    <td>{{ $category->id }}</td>
+                    <td>{{ $category->name }}</td>
+                    <td>
+                        <a href="" class="btn btn-success">
+                            <i class="far fa-eye"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-primary">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-danger">
+                            <i class="far fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+
+            @empty
+                <tr>
+                    <td colspan="5" class="text-center">No hay registros</td>
+                </tr>
+            @endforelse
 
         </x-table>
 
@@ -49,12 +56,11 @@
                         <div class="alert alert-danger w-100 mt-2">
                             {{ $message }}
                         </div>
-
                     @enderror
                 </div>
             </div>
             <hr>
-            <button  class="btn btn-primary float-right">Guardar</button>
+            <button class="btn btn-primary float-right">Guardar</button>
         </form>
 
     </x-modal>

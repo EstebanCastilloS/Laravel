@@ -19,7 +19,9 @@ class CategoryComponent extends Component
     public function render()
     {
         $this->totalRegistros = Category::count();
-        return view('livewire.category.category-component');
+        $categories = Category::orderBy('id','desc')->get();
+        //$categories = collect();
+        return view('livewire.category.category-component', compact('categories'));
     }
 
     //metodo mount
