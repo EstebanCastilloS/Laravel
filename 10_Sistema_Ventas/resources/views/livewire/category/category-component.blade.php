@@ -51,7 +51,7 @@
 
     <x-modal modalId="modalCategory" modalTitle="Categorias">
 
-        <form wire:submit="{{ $id==0 ? 'store':'update' }}">
+        <form wire:submit={{ $id==0 ? "store":"update($id)" }}>
             <div class="form-row">
                 <div class="form-group col-12">
                     <label for="name">Nombre Categoría</label>
