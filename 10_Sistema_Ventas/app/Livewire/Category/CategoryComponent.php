@@ -46,6 +46,18 @@ class CategoryComponent extends Component
 
     }
 
+    public function create()
+    {
+        //limpiar campos
+        $this->reset(['name']);
+
+        //lispiar errores de validacion
+        $this->resetErrorBag();
+
+        //abrir modal
+        $this->dispatch('open-modal','modalCategory');
+    }
+
     public function store()
     {
         // dump('crear Categoría');
