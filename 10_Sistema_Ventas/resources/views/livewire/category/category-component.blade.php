@@ -22,7 +22,7 @@
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
                     <td>
-                        <a href="#" class="btn btn-success">
+                        <a href="{{ route('categories.show', $category) }}" class="btn btn-success">
                             <i class="far fa-eye"></i>
                         </a>
                     </td>
@@ -32,7 +32,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="" class="btn btn-danger">
+                        <a href="#" class="btn btn-danger">
                             <i class="far fa-trash-alt"></i>
                         </a>
                     </td>

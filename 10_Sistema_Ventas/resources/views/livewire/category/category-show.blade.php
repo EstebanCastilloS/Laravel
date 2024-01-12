@@ -1,3 +1,5 @@
 <div>
-    {{-- Be like water. --}}
+    <h1>
+        Ver Categorías
+    </h1>
 </div>
