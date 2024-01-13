@@ -32,7 +32,7 @@
                         </a>
                     </td>
                     <td>
-                        <a  wire:click="$dispatch('delete',{id:{{ $category->id }}, componente:'category.category-component'})" class="btn btn-danger">
+                        <a  wire:click="$dispatch('delete',{id:{{ $category->id }}, eventName:'destroyCategory'})" class="btn btn-danger">
                             <i class="far fa-trash-alt"></i>
                         </a>
                     </td>
