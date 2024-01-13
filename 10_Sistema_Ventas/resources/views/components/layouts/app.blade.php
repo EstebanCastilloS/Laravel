@@ -57,14 +57,37 @@
 
     <script>
         document.addEventListener('livewire:init', function() {
-            Livewire.on('close-modal', (idModal)=>{
-                $('#'+idModal).modal('hide');
+            Livewire.on('close-modal', (idModal) => {
+                $('#' + idModal).modal('hide');
             })
         })
 
         document.addEventListener('livewire:init', function() {
-            Livewire.on('open-modal', (idModal)=>{
-                $('#'+idModal).modal('show');
+            Livewire.on('open-modal', (idModal) => {
+                $('#' + idModal).modal('show');
+            })
+        })
+
+        document.addEventListener('livewire:init', function() {
+            Livewire.on('delete', (e) => {
+                alert(e.id+'-'+e.componente);
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    }
+                });
             })
         })
     </script>
