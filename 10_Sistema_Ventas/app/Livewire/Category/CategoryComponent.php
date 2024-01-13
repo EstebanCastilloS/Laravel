@@ -49,6 +49,9 @@ class CategoryComponent extends Component
 
     public function create()
     {
+        //para boton guardar
+        $this->id = 0;
+
         //limpiar campos
         $this->reset(['name']);
 
