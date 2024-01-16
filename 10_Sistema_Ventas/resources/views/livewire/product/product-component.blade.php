@@ -63,24 +63,6 @@
         </x-slot>
 
     </x-card>
+    @include('products.modal')
 
-    <x-modal modalId="modalCategory" modalTitle="Categorias">
-
-        <form wire:submit={{ $id==0 ? "store":"update($id)" }}>
-            <div class="form-row">
-                <div class="form-group col-12">
-                    <label for="name">Nombre Producto</label>
-                    <input wire:model='name' type="text" class="form-control" placeholder="Nombre Categoría">
-                    @error('name')
-                        <div class="alert alert-danger w-100 mt-2">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-            </div>
-            <hr>
-            <button class="btn btn-primary float-right">{{ $id==0 ? 'Guardar':'Editar' }}</button>
-        </form>
-
-    </x-modal>
 </div>

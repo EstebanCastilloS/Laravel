@@ -33,4 +33,19 @@ class ProductComponent extends Component
 
         return view('livewire.product.product-component', compact('products'));
     }
+
+    public function create()
+    {
+        //para boton guardar
+        $this->id = 0;
+
+        //limpiar campos
+        $this->reset(['name']);
+
+        //lispiar errores de validacion
+        $this->resetErrorBag();
+
+        //abrir modal
+        $this->dispatch('open-modal','modalProduct');
+    }
 }
