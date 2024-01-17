@@ -34,7 +34,8 @@
                     <td>{{ $product->category_id }}</td>
                     <td>Active</td>
                     <td>
-                        <a href="{{ route('products.show', $product) }}" class="btn btn-success">
+                        {{-- {{ route('products.show', $product) }} --}}
+                        <a href="#" class="btn btn-success">
                             <i class="far fa-eye"></i>
                         </a>
                     </td>

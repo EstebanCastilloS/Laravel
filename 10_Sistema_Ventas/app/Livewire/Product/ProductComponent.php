@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Product;
 
+use App\Models\Category;
 use App\Models\Product;
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -34,8 +36,8 @@ class ProductComponent extends Component
     public $purchase_price;
     public $sales_price;
     public $code_bars;
-    public $stock=10;
-    public $minimum_stock;
+    public $stock=0;
+    public $minimum_stock=10;
     public $expiration_date;
     public $active=1;
     public $image;
@@ -49,6 +51,11 @@ class ProductComponent extends Component
             ->orderBy('id','desc')->paginate($this->cant);
 
         return view('livewire.product.product-component', compact('products'));
+    }
+
+    #[Computed()]
+    public function categories(){
+        return Category::all();
     }
 
     public function create()
@@ -86,13 +93,31 @@ class ProductComponent extends Component
 
 
         //$this->validate($rules);
+        $product = new Product();
+        $product->name = $this->name;
+        $product->description = $this->description;
+        $product->purchase_price = $this->purchase_price;
+        $product->sales_price = $this->sales_price;
+        $product->code_bars = $this->code_bars;
+        $product->stock = $this->stock;
+        $product->minimum_stock = $this->minimum_stock;
+        $product->expiration_date = $this->expiration_date;
+        $product->category_id = $this->category_id;
+        $product->active = $this->active;
+        // $product->image = $customName;
+        $product->save();
 
         if($this->image){
             //guardar imagen en storage y obtener el nombre de la imagen para guardar en la bd
             $customName = 'products/'.uniqid().'_.'.$this->image->extension();
             //guardar imagen en storage y obtener el nombre de la imagen para guardar en la bd
             $this->image->storeAs('public',$customName);
+            $product->image()->create(['url' => $customName]);
         }
+
+
+
+
 
         // $category = new Category();
         // $category->name = $this->name;

@@ -23,6 +23,9 @@
                 <select wire:model='category_id' id="category_id" class="form-control">
 
                     <option value="0">Seleccionar</option>
+                    @foreach ($this->categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
 
                 </select>
 
@@ -122,7 +125,7 @@
             <div class="form-group col-md-3">
 
                 <div class="icheck-primary">
-                    <input wire:model='active' type="checkbox" id="active">
+                    <input wire:model='active' type="checkbox" id="active" checked>
                     <label for="active">
                         ¿Esta activo?
                     </label>
@@ -149,7 +152,11 @@
             {{-- imagen --}}
             <div class="form-group col-md-6">
 
-                <img src="" alt="">
+                @if ($this->image)
+                    <img src="{{ $image->temporaryUrl()}}"  width="200">
+                @endif
+
+
 
             </div>
 
