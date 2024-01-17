@@ -5,11 +5,17 @@ namespace App\Livewire\Product;
 use App\Models\Product;
 use Livewire\Attributes\Title;
 use Livewire\Component;
-
+use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 #[Title('Productos')]
 class ProductComponent extends Component
 {
+
+    //usar paginacion
+    use WithPagination;
+    //usar file uploads
+    use WithFileUploads;
 
     //propiedades de la clase
     public $totalRegistros = 0;
@@ -79,7 +85,14 @@ class ProductComponent extends Component
         ];
 
 
-        $this->validate($rules);
+        //$this->validate($rules);
+
+        if($this->image){
+            //guardar imagen en storage y obtener el nombre de la imagen para guardar en la bd
+            $customName = 'products/'.uniqid().'_.'.$this->image->extension();
+            //guardar imagen en storage y obtener el nombre de la imagen para guardar en la bd
+            $this->image->storeAs('public',$customName);
+        }
 
         // $category = new Category();
         // $category->name = $this->name;
