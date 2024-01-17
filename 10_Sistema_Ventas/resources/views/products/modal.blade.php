@@ -51,7 +51,7 @@
             {{-- Start Input purchase_price precio compra --}}
             <div class="form-group col-md-4">
                 <label for="purchase_price">Precio compra:</label>
-                <input wire:model='purchase_price' type="number" class="form-control" placeholder="Precio compra"
+                <input wire:model='purchase_price' min="0" step="any" type="number" class="form-control" placeholder="Precio compra"
                     id="purchase_price">
                 @error('purchase_price')
                     <div class="alert alert-danger w-100 mt-2">{{ $message }}</div>
@@ -59,17 +59,17 @@
             </div>
             {{-- End Input purchase_price precio compra --}}
 
-            {{-- Start Input minimum_price precio venta --}}
+            {{-- Start Input sales_price precio venta --}}
             <div class="form-group col-md-4">
-                <label for="minimum_price">Precio venta:</label>
-                <input wire:model='minimum_price' type="number" class="form-control" placeholder="Precio venta"
-                    id="minimum_price">
+                <label for="sales_price">Precio venta:</label>
+                <input wire:model='sales_price' min="0" step="any" type="number" class="form-control" placeholder="Precio venta"
+                    id="sales_price">
 
                 @error('minimum_price')
                     <div class="alert alert-danger w-100 mt-2">{{ $message }}</div>
                 @enderror
             </div>
-            {{-- End Input minimum_price precio venta --}}
+            {{-- End Input sales_price precio venta --}}
 
 
             {{-- Start Input code_bars codigo barras --}}
@@ -88,7 +88,7 @@
             {{-- Start Input stock --}}
             <div class="form-group col-md-4">
                 <label for="stock">Stock:</label>
-                <input wire:model='stock' type="number" class="form-control" placeholder="Stock del producto"
+                <input wire:model='stock' min="0" type="number" class="form-control" placeholder="Stock del producto"
                     id="stock">
 
                 @error('stock')
@@ -100,7 +100,7 @@
             {{-- Start Input minimum_stock stock minimo --}}
             <div class="form-group col-md-4">
                 <label for="minimum_stock">Stock minimo:</label>
-                <input wire:model='minimum_stock' type="number" class="form-control" placeholder="Stock minimo"
+                <input wire:model='minimum_stock' min="0" type="number" class="form-control" placeholder="Stock minimo"
                     id="minimum_stock">
 
                 @error('minimum_stock')
@@ -113,7 +113,7 @@
             <div class="form-group col-md-4">
                 <label for="expiration_date">Fecha vencimiento:</label>
                 <input wire:model='expiration_date' type="date" class="form-control"
-                    placeholder="Fecha vencimiento" id="expiration_date">
+                     id="expiration_date">
 
                 @error('expiration_date')
                     <div class="alert alert-danger w-100 mt-2">{{ $message }}</div>
@@ -153,7 +153,7 @@
             <div class="form-group col-md-6">
 
                 @if ($this->image)
-                    <img src="{{ $image->temporaryUrl()}}"  width="200">
+                    <img src="{{ $image->temporaryUrl()}}" class="rounded float-right" width="200">
                 @endif
 
 

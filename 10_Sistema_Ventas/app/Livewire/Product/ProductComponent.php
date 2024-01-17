@@ -44,7 +44,6 @@ class ProductComponent extends Component
 
     public function render()
     {
-        $this->dispatch('open-modal','modalProduct');
         $this->totalRegistros = Product::count();
 
         $products = Product::where('name','like','%'.$this->search.'%')
@@ -92,7 +91,8 @@ class ProductComponent extends Component
         ];
 
 
-        //$this->validate($rules);
+        $this->validate($rules);
+
         $product = new Product();
         $product->name = $this->name;
         $product->description = $this->description;
@@ -115,17 +115,15 @@ class ProductComponent extends Component
             $product->image()->create(['url' => $customName]);
         }
 
+        $this->dispatch('close-modal','modalProduct');
+        $this->dispatch('msg','Producto creada correctamente.');
 
-
-
-
-        // $category = new Category();
-        // $category->name = $this->name;
-        // $category->save();
-
-        // $this->dispatch('close-modal','modalCategory');
-        // $this->dispatch('msg','Categoria creada correctamente.');
-
-        // $this->reset(['name']);
+        $this->clean();
     }
+
+    //metodo de limpiar campos
+    public function clean(){
+        $this->reset(['name','description','purchase_price','sales_price','code_bars','stock','minimum_stock','expiration_date','category_id','active','image']);
+    }
+
 }
