@@ -26,6 +26,7 @@ class ProductComponent extends Component
 
     public function render()
     {
+        $this->dispatch('open-modal','modalProduct');
         $this->totalRegistros = Product::count();
 
         $products = Product::where('name','like','%'.$this->search.'%')
